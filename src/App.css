@@ -50,7 +50,7 @@ button.stack {
   border-radius: 0 0.7rem 0.7rem 0;
 }
 
-button.active, button:active {
+.toggle button.active, .toggle button:active {
   background-color: aqua;
   color: black;
 }

@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import './Board.css'
+import './Board.css';
+import {winningPatterns} from '../Data.js';
 import Square from './Square';
 
 export default function Board() {
@@ -9,14 +10,16 @@ export default function Board() {
     
 
     const handleClick = (i) => {
-        if (findWinner(squares) || squares[i]) {
+        if (winner || squares[i]) {
             return;
         }
 
         const updatedSquares = [...squares];
         updatedSquares[i] = isX ? 'X' : 'O';
         setSquares(updatedSquares);
+        console.log(findWinner(updatedSquares));
         setIsX(!isX);
+        
     }
 
     const resetBoard = () => {
@@ -26,27 +29,17 @@ export default function Board() {
     }
 
     const findWinner = (squares) => {
-        const winningPatterns = [
-            [0, 1, 2],
-            [3, 4, 5],
-            [6, 7, 8],
-            [0, 3, 6],
-            [1, 4, 7],
-            [2, 5, 8],
-            [0, 4, 8],
-            [2, 4, 6]
-        ]
-
         for (let i = 0; i < winningPatterns.length; i++) {
             const [a, b, c] = winningPatterns[i];
 
             if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+                console.log(`${a} ` + `${b} ` + `${c}`);
                 setWinner(squares[a]);
-                return winner;
+                return squares[a];
             }
         }
         setWinner(null);
-        return winner;
+        return null;
     }
 
     return (
@@ -67,6 +60,7 @@ export default function Board() {
                 <Square value={squares[7]} onClick={() => handleClick(7)} />
                 <Square value={squares[8]} onClick={() => handleClick(8)} />
             </div>
+            {!winner ? `Turn: ${isX ? 'X' : 'O'}` : `Winner is ${winner}`}
         </div>
     )
 }

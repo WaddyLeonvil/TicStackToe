@@ -27,9 +27,6 @@ function App() {
         </div>
       </div>
       <header className="App-header">
-        <p>
-          Tic-Stack-Toe
-        </p>
         {classic ? <Board /> : ""}
       </header>
     </div>
