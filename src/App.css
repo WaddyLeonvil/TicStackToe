@@ -13,6 +13,48 @@
   }
 }
 
+.page-header {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 50px;
+  width: 210px;
+  left: 50%;
+  margin-top: 25px;
+  margin-left: -105px;
+  border-radius: 9px;
+  background-color: rgb(0, 130, 174);
+  color: white;
+  font-size: 1.4rem;
+}
+
+.toggle button {
+  height: 45px;
+  width: 100px;
+  background-color: rgb(95, 95, 95);
+  border: solid 1px black;
+  font-size: 1rem;
+  color: white;
+  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+
+button.classic {
+  border-radius: 0.7rem 0 0 0.7rem;
+}
+
+button.stack {
+  border-radius: 0 0.7rem 0.7rem 0;
+}
+
+button.active, button:active {
+  background-color: aqua;
+  color: black;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import './Board.css'
 import Square from './Square';
 
 export default function Board() {
