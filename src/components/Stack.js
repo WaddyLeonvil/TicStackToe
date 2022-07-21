@@ -1,49 +1,23 @@
-import React, {useState} from 'react';
-import './Board.css';
+import React, {useState, useEffect} from 'react';
+import './Stack.css';
 import {winningPatterns} from '../Data.js';
 import Square from './Square';
 
-export default function Board() {
+export default function Stack() {
     const [squares, setSquares] = useState(Array(9).fill(null));
     const [isX, setIsX] = useState(true);
     const [winner, setWinner] = useState(null);
-    
 
-    const handleClick = (i) => {
-        if (winner || squares[i]) {
-            return;
-        }
+    const handleClick = () => {
 
-        const updatedSquares = [...squares];
-        updatedSquares[i] = isX ? 'X' : 'O';
-        setSquares(updatedSquares);
-        console.log(findWinner(updatedSquares));
-        setIsX(!isX);
-        
     }
 
     const resetBoard = () => {
-        setSquares(Array(9).fill(null));
-        setIsX(true);
-        setWinner(null);
-    }
-
-    const findWinner = (squares) => {
-        for (let i = 0; i < winningPatterns.length; i++) {
-            const [a, b, c] = winningPatterns[i];
-
-            if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-                console.log(`${a} ` + `${b} ` + `${c}`);
-                setWinner(squares[a]);
-                return squares[a];
-            }
-        }
-        setWinner(null);
-        return null;
+        
     }
 
     return (
-        <div className="board">
+        <div className="stack">
             <button className="reset" onClick={resetBoard}>Reset</button>
             <div className="board-row">
                 <Square value={squares[0]} id='cell-0' onClick={() => handleClick(0)} />

@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'; 
 import './App.css';
 import Board from './components/Board';
+import Stack from './components/Stack';
 
 function App() {
   const [classic, setClassic] = useState(true);
@@ -27,7 +28,7 @@ function App() {
         </div>
       </div>
       <header className="App-header">
-        {classic ? <Board /> : ""}
+        {classic ? <Board /> : <Stack />}
       </header>
     </div>
   );

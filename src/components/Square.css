@@ -1,10 +1,27 @@
 .square {
-    border: solid 2px black;
+    color: white;
     float: left;
     height: 80px;
     width: 80px;
-    margin-right: -1px;
-    margin-top: -1px;
+    border: none;
     padding: 0;
-    font-size: 35px;
+    font-size: 3rem;
+}
+
+.X {
+    background-color: rgb(50, 50, 255)
+}
+
+.O {
+    background-color: rgb(255, 50, 50);
+}
+
+#cell-1, #cell-4, #cell-7 {
+    border-left: solid 3px black;
+    border-right: solid 3px black;
+}
+
+#cell-3, #cell-4, #cell-5 {
+    border-top: solid 3px black;
+    border-bottom: solid 3px black
 }
