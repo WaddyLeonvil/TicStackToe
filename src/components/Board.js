@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './Board.css';
-import {winningPatterns} from '../Data.js';
+import { winningPatterns } from '../Utils';
 import Square from './Square';
 
 export default function Board() {

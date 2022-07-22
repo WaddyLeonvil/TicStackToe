@@ -1,6 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './Stack.css';
-import {winningPatterns} from '../Data.js';
+import { winningPatterns } from '../Utils';
+import { renderXPieces, renderOPieces } from '../Utils';
 import Square from './Square';
 import Piece from './Piece';
 
@@ -8,40 +9,34 @@ export default function Stack() {
     const [squares, setSquares] = useState(Array(9).fill(null));
     const [isX, setIsX] = useState(true);
     const [winner, setWinner] = useState(null);
+    
+    const [active, setActive] = useState(false);
 
+    const handleToggle = ({ target }) => {
+        if (active) {
+            return;
+        }
+        alert(target.className);
+
+
+    }
+    
+    const [xPieces, setXPieces] = useState(renderXPieces(Piece, handleToggle));
+    const [oPieces, setOPieces] = useState(renderOPieces(Piece, handleToggle));
+    
     const handleClick = () => {
 
     }
 
     const resetBoard = () => {
-
+            
     }
-
-    const renderPieces = (player) => {
-        let pieces = [];
-
-        for (let i = 0; i < 5; i++) {
-            pieces.push(<Piece size='1' player={player} />);
-        }
-
-        for (let i = 0; i < 4; i++) {
-            pieces.push(<Piece size='2' player={player} />)
-        }
-
-        for (let i = 0; i < 2; i++) {
-            pieces.push(<Piece size='3' player={player} />)
-        }
-
-        pieces.push(<Piece size='5' player={player} />)
-
-        return pieces;
-    }
-
+    
     return (
         <div className="stack">
             <button className="reset" onClick={resetBoard}>Reset</button>
             <div className="x-pieces">
-                {renderPieces('stackX')}
+                {xPieces}
             </div>
             <div className="full-board">
                 <div className="board-row">
@@ -61,7 +56,7 @@ export default function Stack() {
                 </div>
             </div>
             <div className="o-pieces">
-                {renderPieces('stackO')}
+                {oPieces}
             </div>
             {!winner ? `Turn: ${isX ? 'X' : 'O'}` : `Winner is ${winner}`}
         </div>
