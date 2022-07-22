@@ -9,7 +9,7 @@
 }
 
 .X {
-    background-color: rgb(50, 50, 255)
+    background-color: rgb(50, 50, 255);
 }
 
 .O {
@@ -24,4 +24,20 @@
 #cell-3, #cell-4, #cell-5 {
     border-top: solid 3px black;
     border-bottom: solid 3px black
+}
+
+#cell-0 {
+    border-radius: 10px 0 0 0;
+}
+
+#cell-2 {
+    border-radius: 0 10px 0 0;
+}
+
+#cell-6 {
+    border-radius: 0 0 0 10px;
+}
+
+#cell-8 {
+    border-radius: 0 0 10px 0;
 }
