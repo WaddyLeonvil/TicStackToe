@@ -1,9 +1,10 @@
 .checkerboard {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(8, 70px);
+    grid-template-rows: repeat(8, 70px);
     width: 560px;
     height: 560px;
-    background-color: black;
+    background-color: darkblue;
     color: white;
 }
 
@@ -11,4 +12,12 @@
     width: 70px;
     height: 70px;
     outline: solid 1px white;
+}
+
+.black-tile {
+    background-color: black;
+}
+
+.white-tile {
+    background-color: white;
 }

@@ -10,7 +10,13 @@ export default function Checkerboard() {
 
     for (let i = 0; i < horizontalAxis.length ; i++) {
         for (let j = 0; j < verticalAxis.length; j++) {
-            board.push(<div className='tile'>{horizontalAxis[i]}{verticalAxis[j]} </div>)
+            if ((j + i) % 2 === 0) {
+                board.push(<div className='black-tile'></div>)
+            }
+            else {
+                board.push(<div className='white-tile'></div>)
+            }
+            
         }
     }
 
