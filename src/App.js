@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'; 
 import './App.css';
-import Board from './components/Board';
+import Checkers from './components/Checkers';
+import TicTacToe from './components/TicTacToe';
 
 function App() {
   const [classic, setClassic] = useState(true);
@@ -19,15 +20,15 @@ function App() {
       <div className="page-header">
         <div className="toggle">
           <button className={classic ? 'classic active' : 'classic'} onClick={handleButtonToggle} >
-            Classic
+            Tic-Tac-Toe
           </button>
-          <button className={!classic ? 'stack active' : 'stack'} onClick={handleButtonToggle} >
+          <button className={!classic ? 'checkers active' : 'checkers'} onClick={handleButtonToggle} >
             Checkers
           </button>
         </div>
       </div>
       <header className="App-header">
-        {classic ? <Board /> : ''}
+        {classic ? <TicTacToe /> : <Checkers />}
       </header>
     </div>
   );

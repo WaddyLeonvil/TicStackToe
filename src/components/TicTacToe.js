@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import './Board.css';
+import './TicTacToe.css';
 import { winningPatterns } from '../Utils';
 import Square from './Square';
 
-export default function Board() {
+export default function TicTacToe() {
     const [squares, setSquares] = useState(Array(9).fill(null));
     const [isX, setIsX] = useState(true);
     const [winner, setWinner] = useState(null);
