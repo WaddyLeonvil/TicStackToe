@@ -7,17 +7,3 @@
     background-color: darkblue;
     color: white;
 }
-
-.tile {
-    width: 70px;
-    height: 70px;
-    outline: solid 1px white;
-}
-
-.black-tile {
-    background-color: black;
-}
-
-.white-tile {
-    background-color: white;
-}
