@@ -7,7 +7,7 @@ export default function TicTacToe() {
     const [squares, setSquares] = useState(Array(9).fill(null));
     const [isX, setIsX] = useState(true);
     const [winner, setWinner] = useState(null);
-    
+    const [messages, setMessages] = useState([]);
 
     const handleClick = (i) => {
         if (winner || squares[i]) {
