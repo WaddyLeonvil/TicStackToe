@@ -23,7 +23,7 @@ webServer.on('request', function(request) {
 
     const connection = request.accept(null, request.origin);
     clients[userID] = connection;
-    console.log('Connected: ' + userID + ' in ' + Object.getOwnPropertyNames(clients));
+    console.log('There are now ' + webServer.connections.length + ' clients connected.\n');
 
     connection.on('message', function(message) {
         if (message.type === 'utf8') {
@@ -31,8 +31,11 @@ webServer.on('request', function(request) {
 
             for (let key in clients) {
                 clients[key].sendUTF(message.utf8Data);
-                console.log('Sent message to: ', clients[key]);
             }
         }
+    })
+    connection.on('close', function(reasonCode, description) {
+        console.log((new Date()) + 'Dude from ' + connection.remoteAddress + 'disconnected');
+        delete clients.userID;
     })
 })
