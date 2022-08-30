@@ -14,6 +14,13 @@
   }
 }
 
+.username {
+  position: absolute;
+  width: 250px;
+  left: 50%;
+  margin-left: -125px;
+}
+
 .page-header {
   position: fixed;
   display: flex;
@@ -23,7 +30,7 @@
   text-align: center;
   width: 210px;
   left: 50%;
-  margin-top: 25px;
+  margin-top: 50px;
   margin-left: -105px;
   border-radius: 9px;
   color: white;
