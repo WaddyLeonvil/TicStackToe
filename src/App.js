@@ -42,7 +42,8 @@ function App() {
     }
   }
 
-  const onButtonClicked = (message) => {
+  const onButtonClicked = (cell) => {
+    let message = 'Player clicked cell ' + cell.toString();
     client.send(JSON.stringify({
       type: 'message',
       msg: message,
@@ -68,9 +69,8 @@ function App() {
               </button>
             </div>
           </div>
-          <div className="user-msgs">{messages.map(msg => <p className='user-msg'>Message: {msg.msg}, User: {msg.user}</p>)}</div>
           <header className="App-header">
-            {classic ? <TicTacToe /> : <Checkers />}
+            {classic ? <TicTacToe client={client} username={username} /> : <Checkers />}
           </header>
         </>
         :

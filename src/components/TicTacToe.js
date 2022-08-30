@@ -1,13 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './TicTacToe.css';
 import { winningPatterns } from '../Utils';
 import Square from './Square';
 
-export default function TicTacToe() {
+export default function TicTacToe({ client, username }) {
     const [squares, setSquares] = useState(Array(9).fill(null));
     const [isX, setIsX] = useState(true);
     const [winner, setWinner] = useState(null);
-    const [messages, setMessages] = useState([]);
+
+    useEffect(() => {
+        client.onmessage = (message) => {
+            const data = JSON.parse(message.data);
+            if (data.msg === 'reset-board') {
+                setSquares(Array(9).fill(null));
+                setIsX(true);
+                setWinner(null);
+            }
+        }
+    })
+
+    const onCellClicked = (cell) => {
+        let message = 'Player clicked cell ' + cell.toString();
+        client.send(JSON.stringify({
+            type: 'message',
+            msg: 'cell-clicked',
+            user: username,
+            cell: cell.toString()
+        }));
+    }
 
     const handleClick = (i) => {
         if (winner || squares[i]) {
@@ -19,13 +39,16 @@ export default function TicTacToe() {
         setSquares(updatedSquares);
         console.log(findWinner(updatedSquares));
         setIsX(!isX);
-        
+        onCellClicked(i);
     }
 
     const resetBoard = () => {
-        setSquares(Array(9).fill(null));
-        setIsX(true);
-        setWinner(null);
+        client.send(JSON.stringify({
+            type: 'message',
+            msg: 'reset-board',
+            user: username
+        }));
+        
     }
 
     const findWinner = (squares) => {

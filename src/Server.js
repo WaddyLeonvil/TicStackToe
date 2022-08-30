@@ -26,13 +26,16 @@ webServer.on('request', function(request) {
     console.log('There are now ' + webServer.connections.length + ' clients connected.\n');
 
     connection.on('message', function(message) {
-        if (message.type === 'utf8') {
+        for (let key in clients) {
+            clients[key].sendUTF(message.utf8Data);
+        }
+        /* if (message.type === 'utf8') {
             console.log('Received message: ', message.utf8Data);
 
             for (let key in clients) {
                 clients[key].sendUTF(message.utf8Data);
             }
-        }
+        } */
     })
     connection.on('close', function(reasonCode, description) {
         console.log((new Date()) + 'Dude from ' + connection.remoteAddress + 'disconnected');
